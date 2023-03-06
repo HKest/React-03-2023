@@ -1,0 +1,20 @@
+.pilt {
+  width: 100px;
+  height: 100px;
+}
+.pilt:hover {
+
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.nupp {
+
+   border: 2px solid rgb(196, 132, 15); 
+
+/* control ä on  */
+}
+.nupp:hover {
+
+  background-color: rgb(135, 121, 121);
+}
