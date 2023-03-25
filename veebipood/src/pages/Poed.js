@@ -11,7 +11,8 @@ function Poed() {
 
     // }
         const sorteeriAZ = () => {
-            poed.sort(poedFailist); // default sorteermine: a-z 
+            poed.sort(); 
+            uuendaPoed(poed.slice());// default sorteermine: a-z 
         // ("Ülemiste", "Viimsi", "Rocca al Mare", "Magistrali", "Kristine", "Vesse", "järveotsa");
         // ("Ülemiste", "Viimsi", "Rocca al Mare", "Magistrali", "Kristine", "Vesse", "järveotsa");
     }
@@ -160,7 +161,7 @@ uuendaPoed(vastus);
     <br />
     <br />
 
-        {poed.map( uksPood => <div>{uksPood}</div>  )}
+      {poed.map(poed => <div>{poed}</div> )}
 
     <br />
         <div>---tavalisest kirjutatud nimekiri-----</div>
