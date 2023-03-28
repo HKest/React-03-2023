@@ -161,7 +161,7 @@ uuendaPoed(vastus);
     <br />
     <br />
 
-      {poed.map(poed => <div>{poed}</div> )}
+      {poed.map((YksPood, i) => <div key={i}> {YksPood}</div> )}
 
     <br />
         <div>---tavalisest kirjutatud nimekiri-----</div>
