@@ -111,9 +111,15 @@ uuendaPoed(vastus);
 
     const vastus = poed.map(YksPood => YksPood + YksPood.length);
 uuendaPoed(vastus);
+
+
 }
 
-    
+   const arvutaTahedKokku = () => {
+    let summa = 0;
+    poed.forEach(element => summa = summa + element.length);
+    return summa;
+   } 
 
   return (
     <div>
@@ -127,6 +133,7 @@ uuendaPoed(vastus);
 <br />
 
 <div>Poode on kokku: {poed.length} tk</div>
+<div>Kõikide poodide tähemärkide arv on: {arvutaTahedKokku()}</div>
 
 <br />
 <br />

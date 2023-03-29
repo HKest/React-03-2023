@@ -1,6 +1,7 @@
 //alustada käsuga rfce ja enter, tekitab reacti
 
 import React, { useRef, useState } from "react"
+import { ToastContainer, toast } from 'react-toastify';
 
 function Seaded() {
 
@@ -11,30 +12,64 @@ function Seaded() {
 
     const muudaKeelEst = () => {
         uuendaKeel("est"); 
-        localStorage. setItem(localStorage.getItem ("keel")); //sissekirjutatatud Javascripti- salvestame brows
+        localStorage.setItem(localStorage.getItem ("keel")); //sissekirjutatatud Javascripti- salvestame brows
     }
 
     const muudaKeelEng = () => {
         uuendaKeel("eng");
-        localStorage. setItem(localStorage.getItem("keel"));
+        localStorage.setItem(localStorage.getItem("keel"));
     }
 
     const muudaKeelRus = () => {
         uuendaKeel("rus");
-        localStorage. setItem("keel", "rus");
+        localStorage.setItem("keel", "rus");
     }
     
     const salvestaAadress = () => {
- localStorage.setItem("aadress", aadressViide.current.value);
+        if (aadressViide.current.value === "") {
+        toast.error("Tühja aadressi ei saa sisestada!")
+        return;
+        }
+
+        if (aadressViide.current.value[0] === aadressViide.current.value[0].toLowerCase()) {
+        toast.error("Aadress ei saa sisestada väikese algus tähega")
+       return;
     }
+        toast.success("Aadress edukalt sisestatud")
+        localStorage.setItem("aadress", aadressViide.current.value);
+    }
+        //uus
 
     const salvestaEmail = () => {
-        localStorage.setItem("email", emailViide.current.value);
+        if (emailViide.current.value === "") {
+            toast.error("Tühja emaili ei saa sisetada!");
+       return;
+    }
+    if (emailViide.current.value.includes("@") === false) {
+        toast.error("E-maili ei saa sisestada kui pole @ märki");
+        return;
+    }
+   
+toast.success("E-mail edukalt sisestatud")
+localStorage.setItem("email", emailViide.current.value);
+    return;
+}
+
+const salvestaTelefon = () => {
+      
+    if (telefonViide.current.value === "") {
+        toast.error("Telefoni ei saa sisetada!")
+        return;
+    }
+    if (telefonViide.current.value.includes("+372") === false) {
+        toast.error("Numbrit ei saa sisestada kui pole +372 riigikoodi");
+        return;
     }
 
-    const salvestaTelefon = () => {
-        localStorage.setItem("telefon", telefonViide.current.value);
-    }
+toast.success("Telefon on õigesti sisestatud")
+localStorage.setItem("telefon", telefonViide.current.value);
+}
+    
     // WCAG - web content accessibility guidelines, EU seadused
 
     return (
@@ -61,7 +96,9 @@ function Seaded() {
 {keel === "est" && <div>Leht on eesti keelne</div>}
 {keel === "eng" && <div>The page is in English</div>}
 {keel === "rus" && <div>Pyccki Rsõk</div>}
-
+<br />
+<br />
+<ToastContainer />
 
         </div>
     )
