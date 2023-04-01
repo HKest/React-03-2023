@@ -13,7 +13,7 @@ function LisaToode() {
      } else {
         uuendaSonum("Toode nimega " +  
         inputiLuger.current.value + inputiLuger.current.value + " lisatud!" + tootedFailist.push(inputiLuger.current.value));
-     }
+     }l
     }
     return (
         <div>

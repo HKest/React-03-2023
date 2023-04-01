@@ -8,7 +8,7 @@ function HaldaTooted() {
 
 
 const kustuta = (index) => {
- tootedFailist.splice(index,1);
+ tootedFailist.splice(index, 1);
  uuendaTooted(tootedFailist.slice());
 
 }
