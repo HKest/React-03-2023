@@ -55,3 +55,14 @@
 
 }
 
+.aktiivne-toode {
+  border: 1px green;
+  background-color: rgb(244, 237, 237);
+  
+}
+
+.mitteaktiivne-toode {
+  border: 1px sold red;
+  background-color: gray;
+  
+}

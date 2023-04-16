@@ -11,7 +11,7 @@ function Poed() {
 
     // }
         const sorteeriAZ = () => {
-            poed.sort(); 
+            poed.sort((a,b) => b.nimi.localeCompare(a.nimi) ); 
             uuendaPoed(poed.slice());// default sorteermine: a-z 
         // ("Ülemiste", "Viimsi", "Rocca al Mare", "Magistrali", "Kristine", "Vesse", "järveotsa");
         // ("Ülemiste", "Viimsi", "Rocca al Mare", "Magistrali", "Kristine", "Vesse", "järveotsa");
@@ -24,47 +24,47 @@ function Poed() {
     //     uuendaPoed(poed.slice()); //kustutab mälukoha
     // }
         const sorteeriZA = () => {
-            poed.sort((a,b) => b.localeCompare(a) ); // default sorteermine: a-z 
+            poed.sort((a,b) => b.nimi.localeCompare(a.nimi) ); // default sorteermine: a-z 
             uuendaPoed(poed.slice()); //kustutab mälukoha
     }
 
 
     const sorteeriTahedKasv = () => {
-        poed.sort((a,b) =>a.length - b.length );
+        poed.sort((a,b) =>a.nimi.length - b.nimi.length );
         uuendaPoed(poed.slice());
 
     }
 
     const sorteeriTahedKah = () => {
-        poed.sort((a,b) => b.length - a.length);
+        poed.sort((a,b) => b.nimi.length - a.nimi.length);
         uuendaPoed(poed.slice());
     }
 
     const sorteeriKolmasTaht = () => {
-        poed.sort((a,b) => a[2].localeCompare(b[2]));
+        poed.sort((a,b) => a.nimi[2].localeCompare(b.nimi[2]));
         uuendaPoed(poed.slice());
     }
 
     const filtreeriELopus = () => {
-       const tulem = poed.filter(element => element.endsWith("e"));
+       const tulem = poed.filter(element => element.nimi.endsWith("e"));
         uuendaPoed(tulem);
     
     }
 
     const filtreerKellel9Tahte = () => {
-        const tulem = poed.filter(element => element.length === 9);
+        const tulem = poed.filter(element => element.nimi.length === 9);
          uuendaPoed(tulem);
      
      }
 
      const filtreeriSisaldabTaheLyhenditIs = () => {
-        const tulem = poed.filter(element => element.includes ("is"));
+        const tulem = poed.filter(element => element.nimi.includes ("is"));
          uuendaPoed(tulem);
      
      }
 
      const filtreerKellelVah7Taht = () => {
-        const tulem = poed.filter(element => element.length > 7);
+        const tulem = poed.filter(element => element.nimi.length > 7);
          uuendaPoed(tulem);
      
      }
@@ -72,32 +72,32 @@ function Poed() {
      
      
      const filtreeriKolmasTahti = () => {
-        const tulem = poed.filter(element => element[2] === "i");
+        const tulem = poed.filter(element => element.nimi[2] === "i");
          uuendaPoed(tulem);
      
      }
 
      
    const muudaKoikSuureks = () => {
-const vastus = poed.map(YksPood => YksPood.toUpperCase());
+const vastus = poed.map(YksPood =>{ return {"nimi":YksPood.nimi.toUpperCase(), "tel":YksPood.tel}});
 uuendaPoed(vastus);
 
    }
 
    const muudaKoikVaikeseks = () => {
     
-    const vastus = poed.map(YksPood => YksPood.toLowerCase());
+    const vastus = poed.map(YksPood => { return {"nimi":YksPood.nimi.toLowerCase(), "tel":YksPood.tel}});
 uuendaPoed(vastus);
    }
 
    const muudaKoikITahedOtaheks = () => {
 
-    const vastus = poed.map(YksPood => YksPood.replaceAll("i", "0"));
+    const vastus = poed.map(YksPood =>{ return {"nimi":YksPood.nimi.replaceAll("i", "0"), "tel":YksPood.tel}}) ;
 uuendaPoed(vastus);
 }
 
    const muudaKoikideleKriipsudEtte = () => {
-    const vastus = poed.map(YksPood => "--" + YksPood);
+    const vastus = poed.map(YksPood => {return {"nimi": "--" + YksPood.nimi, "tel": YksPood.tel}});
 uuendaPoed(vastus);
    }
 
@@ -117,7 +117,7 @@ uuendaPoed(vastus);
 
    const arvutaTahedKokku = () => {
     let summa = 0;
-    poed.forEach(element => summa = summa + element.length);
+    poed.forEach(element => summa = summa + element.nimi.length);
     return summa;
    } 
 
@@ -168,7 +168,7 @@ uuendaPoed(vastus);
     <br />
     <br />
 
-      {poed.map((YksPood, i) => <div key={i}> {YksPood}</div> )}
+      {poed.map((YksPood, i) => <div key={i}> {YksPood.nimi} - {YksPood.tel}</div> )}
 
     <br />
         <div>---tavalisest kirjutatud nimekiri-----</div>
